@@ -5,10 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>لیلی | افکار مریض من</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -42,23 +45,38 @@ main {
     padding: 20px;
 }
 
-.story {
+.chapter {
     background: #101827;
     border: 1px solid #1e3c68;
     border-radius: 15px;
     padding: 30px;
+    margin-bottom: 25px;
 }
 
-.story h2 {
+.chapter h2 {
     color: #287BFF;
     text-align: center;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-.story-text {
-    white-space: pre-line;
+.chapter-text {
     font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.chapter-text p {
+    margin: 0 0 16px;
+}
+
+.status {
+    text-align: center;
+    color: #9aa8bd;
+    padding: 30px 15px;
+}
+
+.error {
+    color: #ff7777;
 }
 
 a {
@@ -68,7 +86,9 @@ a {
     text-decoration: none;
 }
 
-a:hover { color: #70aaff; }
+a:hover {
+    color: #70aaff;
+}
 
 footer {
     text-align: center;
@@ -87,109 +107,131 @@ footer {
 </header>
 
 <main>
-<section class="story">
-<h2>لیلی</h2>
+    <div id="chapters" class="status">
+        در حال بارگذاری داستان...
+    </div>
 
-<div class="story-text">
-کنج اتاقش نشسته بودم.کاری به چیزی نداشتم تمام فکر و ذکرم نخ سیگار جلوم بود.صدای در حواسمو از تمام افکارم جمع خودش کرد.
-+سلام.زنده ای
--عه سلام کی اومدی؟ ساعت چنده؟
-+نزدیکای ۱۲ عه.خوبی تو؟
--خوب؟ اها اها اره خوب..م .
-+دروغ میگی؟
--نبابا خوبم تو چطوری؟
-+منم خوبم امروز خیلی روز عجیبی داشتم.
--عه نبابا چرا چی شد مگه؟
-گرم تعریف کردن از روزش شد که یهو با یه سوال کلا بیخیال بد بودن روزش شد.
-+اره خلاصه اینجوری اصلا حواست بود چی گفتم؟
--...
-+اشکان؟
--ها ها جانم؟
-+اصلا فهمیدی چی گفتم؟
--اره اره حواسم بود.
-+چی گفتم؟؟
--امم ...
-+چته؟
-از همه بهتر میفهمید که حالم خوب نیست.
-نمیتونستم بهش دروغ بگم همیشه میفهمید و بروم میاورد.
-+لیلی؟
--جان لیلی؟
-+من ادم بدی ام؟
--اگه بودی که اینهمه سال رفیق نبودیم که!
-+پس چرا همه ازم دوری میکنن؟
--هعییی باز یادش افتادی؟چه سوالیه میپرسم معلومه که اره برا همینه باز رو اوردی به مشروب و سیگار! مگه قرار نبود برا قلبت بذاری کنار؟
--بابا لیلی قلبم مشکلی نداره! جا خالیه اونه که باعث شده قلبم درست کار نکنه! بخدا اگه بیاد خوب میشم.
-+اشکان بس کن توروخدا این بحث تموم شدس! اون دیگه ازدواج کرده!
--اوهوم..
-+پاشو پاشو وقت دارو هات داره میگذره! 
--لیلی؟تا کی باید دارو بخورم؟
-+تا زمانی که حالت برگرده به قبل!
--بابا لیلی درد من با دارو خوب نمیشه!
-بیچاره لیلی! عاشق کسی شده بود که خودش از عشق یکی دیگه دیوونه شده بود!
-+ هعییی بالاخره بهت قول دادم که درمانت کنم سره حرفمم میمونم حتی اگه زمان بر باشه.
--باشه!
-لیلی پرستار بخش ۴۳ بیمارستان روانی امین اباده.
-+اشکان؟ اشکان؟ خوابی؟
--...
-+مثل اینکه خوابی! خب حالا که خوابی خیلی راحتر میتونم باهات حرف بزنم! کاش قبل اینکه بیارنت اینجا میدیدمت . عمرا اگه میذاشتم به این روز بیوفتی! معلوم نیست چیکار کردن باهات که الان این حالی!
-لعنتی شبا به زور قرص میخوابی روزا به زور من از تخت بلند میشی چهار قدم دور حوض اسایشگاه باهام قدم میزنی!
-اشکانم جون لیلی زودتر خوب شو.بخدا خیلی منتظرم بهتر بشی تا بتونم بیام تو زندگیتو کاری کنم فراموش کنی همه چیزو.
--ل ی لی؟
-+عه بیدار شدی؟من بیدارت کردم عزیز.... چی اشکان جان؟
--نه لیلی تشنه ام بود از تشنگی بیدار شدم!
-بی وقفه حمله بردم سمت بطری ابی که همیشه لیلی با اب خنک برام پر میکرد!
-پسر این دختر واقعا یه فرشته اس.کاش بهتر بود حالم که میتونستم بهش یکم کمک کنم بتونه بره خونه استراحت کنه.هر شب پیش من تو اتاق من میخوابه!
-+بهتری؟
--اره خوبم.سیگار منو میدی بهم.
-+نکش معده ات خالیه! 
--اشکال نداره بده بهم !
-سیگارمو گذاشتم لب دهنم ولی روشن نکردم.مثل اینکه دیگه حتی حوصله سیگار کشیدن هم ندارم.پیر شدی اشکان پیر شدی پیرت کرد.
-+اشکا..ن؟
--جانم؟
-+میشه یچیزی بپرسم؟
--اره بگو
-+اگ ه من ازت بخو..ام با...هم باشی..م؟
--خب؟؟
-+جوابت چیه؟
-خشکم زد! کل تنم یخ کرد! از طرفی هم این دختر تنها راه نجاتم و برگشت به زندگی قبلیمه از طرفی هم میترسم اذیتش کنم! البته صد درصد از الان کمتر اذیتش میکنم.
--نمیدونم!
-+یعنی چی؟
--یعنی نمیدونم لیلی
-+یعنی نه؟
--نه نه نه من مشکل اینه که میترسم عذابت بدم بالاخره هرچی باشه من مریضم!
-+مگه دیشب نگفتی اگه بیاد حالت خوب میشه؟
--خب؟
-+خب منو بذار جای اون!بذار من قلبت ترمیم کنم! یه شانس بهم بده!
--خبب خودت اذیت نمیشی؟ از اینکه بجای یه ادم بهتر با یه ادم مریض باشی؟
-+مگه تو خودت با یه ادم مریض نبودی؟
--خب؟
-+خب منم الان میخوام با تو باشم! دیوونه نمیبینی شبا تا صبح بالا سرت میخوابم؟
-تا صبح هزار بار نفساتو میشمارم که یهو ریتم نفسات بهم نریزه!
-اشکان من عاشقت شدم تو این دو سال هر روزشو پیشت بودم!
-الانم اخرای طرح امه و چند وقت دیگه باید برگردم شهرم! ولی اگه‌ تو قبول کنی برنمیگردم!
-انقدر اضافه‌ میمونم تا از اینجا باهم بریم سره خونه زندگیمون!
--اخرای طرحته؟یعنی دیگه نمیبینمت؟
-+اگه جوابت منفی باشه نه دیگه کاری ندارم بمونم دیگه!
-روحمم خبر نداشت که ۴ ماه از طرح لیلی هم گذشته بود و الان تونسته حرف دلشو بهم بزنه!
-+قبول؟بمونم؟
--بمون! ولی بدون که من هنوز مریضم!
-+اگه اسم من لیلیه خوبت میکنم قول میدم بهت عزیز دلم!
--باشه. 
-نمیدونم درسته با پرستاری که دوسال زیر پر و بالمو گرفته باشم یا نه ولی منم لیلی رو دوس داشتم ولی هیچوقت تا زمانی که خودم حالم بد بود نمیتونستم چیزی بهش بگم! ولی شاید این یه راه فرار باشه برام و یه شروع دوباره برا اشکان جدید
-+هوی به چی فکر میکنی؟ بگیر بخواب عزیزکم بخواب فردا باهم کلی حرف میزنیم!
-و این اخرین مکالمه‌ منو لیلی بود!
-همون شب اخرین جایی رو که لیلی دید اسفالت خیابون و ماشینی بود که کاپوت و شیشه اش داغون شده بود!
-
-کاف
-</div>
-</section>
-
-<a href="index.html">← بازگشت به صفحه اصلی</a>
+    <a href="index.html">← بازگشت به صفحه اصلی</a>
 </main>
 
 <footer>
-افکار مریض من | جایی برای نوشته‌هایی از ذهن من
+    افکار مریض من | جایی برای نوشته‌هایی از ذهن من
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+
+<script>
+const chaptersContainer = document.getElementById("chapters");
+
+const API_URL =
+    "https://api.github.com/repos/kiarashhatamy-hash/afkare-marize-man/contents/chapters?ref=main";
+
+marked.setOptions({
+    breaks: true
+});
+
+function showMessage(message, isError = false) {
+    chaptersContainer.className =
+        isError ? "status error" : "status";
+
+    chaptersContainer.textContent = message;
+}
+
+async function loadChapters() {
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("فهرست فصل‌ها دریافت نشد.");
+        }
+
+        const files = await response.json();
+
+        const markdownFiles = files.filter(file =>
+            file.type === "file" &&
+            file.name.toLowerCase().endsWith(".md")
+        );
+
+        const allChapters = await Promise.all(
+            markdownFiles.map(async file => {
+                const fileResponse = await fetch(file.download_url);
+
+                if (!fileResponse.ok) {
+                    return null;
+                }
+
+                const markdown = await fileResponse.text();
+
+                const match = markdown.match(
+                    /^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n?([\s\S]*)$/
+                );
+
+                if (!match) {
+                    return null;
+                }
+
+                const metadata = jsyaml.load(match[1]) || {};
+                const body = match[2];
+
+                return {
+                    title: metadata.title || file.name.replace(".md", ""),
+                    story: metadata.story,
+                    chapter: Number(metadata.chapter || 0),
+                    published: metadata.published === true,
+                    body: body
+                };
+            })
+        );
+
+        const publishedChapters = allChapters
+            .filter(chapter =>
+                chapter &&
+                chapter.story === "لیلی" &&
+                chapter.published === true
+            )
+            .sort((a, b) => a.chapter - b.chapter);
+
+        if (publishedChapters.length === 0) {
+            showMessage(
+                "هنوز فصلی برای داستان لیلی منتشر نشده است."
+            );
+            return;
+        }
+
+        chaptersContainer.className = "";
+
+        chaptersContainer.innerHTML = publishedChapters.map(chapter => `
+            <section class="chapter">
+                <h2>${escapeHTML(chapter.title)}</h2>
+                <div class="chapter-text">
+                    ${marked.parse(chapter.body || "")}
+                </div>
+            </section>
+        `).join("");
+
+    } catch (error) {
+        console.error(error);
+
+        showMessage(
+            "بارگذاری فصل‌ها با مشکل مواجه شد. لطفاً کمی بعد دوباره امتحان کن.",
+            true
+        );
+    }
+}
+
+function escapeHTML(text) {
+    return String(text).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[char]);
+}
+
+loadChapters();
+</script>
 
 </body>
 </html>
