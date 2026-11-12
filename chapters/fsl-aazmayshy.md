@@ -1,5 +1,5 @@
 ---
-title: فصل آزمایشی
+title: لیلی
 story: "\tلیلی"
 chapter: 1
 published: true
