@@ -1,0 +1,69 @@
+
+media:
+  input: media
+  output: /media
+
+content:
+  - name: chapters
+    label: فصل‌های داستان‌ها
+    type: collection
+    path: chapters
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields:
+        - title
+        - story
+        - chapter
+        - published
+    fields:
+      - name: title
+        label: عنوان فصل
+        type: string
+        required: true
+
+      - name: story
+        label: نام داستان
+        type: string
+        required: true
+
+      - name: chapter
+        label: شماره فصل
+        type: number
+
+      - name: published
+        label: انتشار
+        type: boolean
+
+      - name: body
+        label: متن فصل
+        type: rich-text
+
+  - name: homepage
+    label: صفحه اصلی سایت
+    type: file
+    path: index.html
+    format: code
+    fields: []
+
+  - name: leili
+    label: صفحه داستان لیلی
+    type: file
+    path: leili.html
+    format: code
+    fields: []
+
+  - name: mard
+    label: صفحه مرد سیگارفروش
+    type: file
+    path: mard-sigarfrosh.html
+    format: code
+    fields: []
+
+  - name: to-ra
+    label: صفحه تو را من دیده‌ام با او
+    type: file
+    path: to-ra-man-dideam.html
+    format: code
+    fields: []
