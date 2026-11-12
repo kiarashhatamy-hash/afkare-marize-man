@@ -58,7 +58,8 @@
         .chapter h2 {
             color: #287BFF;
             text-align: center;
-            margin: 0 0 25px;
+            margin-top: 0;
+            margin-bottom: 25px;
         }
 
         .chapter-text {
@@ -123,11 +124,13 @@
     </header>
 
     <main>
+
         <div id="chapters" class="status">
             در حال بارگذاری داستان...
         </div>
 
         <a href="index.html">← بازگشت به صفحه اصلی</a>
+
     </main>
 
     <footer>
@@ -135,11 +138,13 @@
     </footer>
 
     <script>
+
         const chaptersContainer = document.getElementById("chapters");
 
         const API_URL =
             "https://api.github.com/repos/kiarashhatamy-hash/afkare-marize-man/contents/chapters?ref=main";
 
+        // نمایش پیام
         function showMessage(message, isError = false) {
             chaptersContainer.className =
                 isError ? "status error" : "status";
@@ -147,6 +152,7 @@
             chaptersContainer.textContent = message;
         }
 
+        // جلوگیری از اجرای کدهای ناخواسته در متن
         function escapeHTML(text) {
             return String(text).replace(/[&<>"']/g, function(char) {
                 return {
@@ -159,52 +165,56 @@
             });
         }
 
-        // یکسان‌سازی نام داستان و حذف فاصله‌های اضافی
+        // اصلاح نام داستان و حذف کاراکترهای اضافی
         function normalizeStory(value) {
             return String(value || "")
                 .replace(/\\[tnr]/gi, "")
                 .replace(/[\s\u200c\u200e\u200f]/g, "")
-                .trim();
+                .replace(/[\u200b\ufeff]/g, "")
+                .trim()
+                .replace(/ي/g, "ی")
+                .replace(/ك/g, "ک");
         }
 
-        // خواندن مقدارهای فایل فصل
-        function parseValue(value) {
-            value = value.trim();
-
-            if (value.startsWith('"') && value.endsWith('"')) {
-                try {
-                    return JSON.parse(value);
-                } catch (error) {
-                    return value.slice(1, -1);
-                }
-            }
-
-            if (value.startsWith("'") && value.endsWith("'")) {
-                return value.slice(1, -1).replace(/''/g, "'");
-            }
-
-            return value;
-        }
-
+        // خواندن اطلاعات ابتدای فایل Markdown
         function readMetadata(text) {
             const metadata = {};
 
             text.split(/\r?\n/).forEach(function(line) {
+
                 const match = line.match(/^([a-zA-Z_]+):\s*(.*)$/);
 
                 if (!match) return;
 
-                metadata[match[1]] = parseValue(match[2]);
+                let value = match[2].trim();
+
+                if (
+                    value.startsWith('"') &&
+                    value.endsWith('"')
+                ) {
+                    value = value.slice(1, -1);
+                }
+
+                if (
+                    value.startsWith("'") &&
+                    value.endsWith("'")
+                ) {
+                    value = value.slice(1, -1);
+                }
+
+                metadata[match[1]] = value;
             });
 
             return metadata;
         }
 
-        // نمایش متن ساده و امن
+        // تبدیل متن فصل به پاراگراف
         function renderText(text) {
+
             return String(text || "")
                 .split(/\r?\n/)
                 .map(function(line) {
+
                     if (!line.trim()) return "";
 
                     let safeLine = escapeHTML(line.trim());
@@ -220,12 +230,16 @@
                     );
 
                     return "<p>" + safeLine + "</p>";
+
                 })
                 .join("");
         }
 
+        // دریافت فصل‌ها از گیت‌هاب
         async function loadChapters() {
+
             try {
+
                 showMessage("در حال دریافت فصل‌های داستان...");
 
                 const response = await fetch(API_URL, {
@@ -237,8 +251,7 @@
 
                 if (!response.ok) {
                     throw new Error(
-                        "دریافت اطلاعات گیت‌هاب ناموفق بود. کد خطا: " +
-                        response.status
+                        "خطای گیت‌هاب: " + response.status
                     );
                 }
 
@@ -256,6 +269,7 @@
                 const chapters = [];
 
                 for (const file of markdownFiles) {
+
                     const fileResponse = await fetch(file.download_url, {
                         cache: "no-store"
                     });
@@ -272,59 +286,88 @@
 
                     const metadata = readMetadata(match[1]);
 
+                    const storyName = normalizeStory(metadata.story);
+
+                    const isPublished =
+                        String(metadata.published)
+                            .toLowerCase()
+                            .trim() === "true";
+
                     chapters.push({
+
                         title: metadata.title || file.name.replace(/\.md$/i, ""),
-                        story: normalizeStory(metadata.story),
+
+                        story: storyName,
+
                         chapter: Number(metadata.chapter || 0),
-                        published:
-                            String(metadata.published).toLowerCase().trim() === "true",
+
+                        published: isPublished,
+
                         body: match[2]
+
                     });
                 }
 
+                // فقط فصل‌های منتشرشده داستان لیلی
                 const publishedChapters = chapters
                     .filter(function(chapter) {
+
                         return chapter.story === "لیلی" &&
                             chapter.published === true;
+
                     })
                     .sort(function(a, b) {
+
                         return a.chapter - b.chapter;
+
                     });
 
                 if (publishedChapters.length === 0) {
+
                     showMessage(
-                        "فصل منتشرشده‌ای برای لیلی پیدا نشد. تعداد فایل‌های بررسی‌شده: " +
+                        "فصلی برای داستان لیلی پیدا نشد. تعداد فایل‌های بررسی‌شده: " +
                         markdownFiles.length
                     );
+
                     return;
                 }
 
+                // نمایش فصل‌ها
                 chaptersContainer.className = "";
 
                 chaptersContainer.innerHTML =
                     publishedChapters.map(function(chapter) {
+
                         return `
                             <section class="chapter">
-                                <h2>${escapeHTML(chapter.title)}</h2>
+
+                                <h2>
+                                    ${escapeHTML(chapter.title)}
+                                </h2>
 
                                 <div class="chapter-text">
                                     ${renderText(chapter.body)}
                                 </div>
+
                             </section>
                         `;
+
                     }).join("");
 
             } catch (error) {
-                console.error("Leili loading error:", error);
+
+                console.error("Leili error:", error);
 
                 showMessage(
                     "خطا در بارگذاری داستان: " + error.message,
                     true
                 );
+
             }
         }
 
         loadChapters();
+
     </script>
 
 </body>
